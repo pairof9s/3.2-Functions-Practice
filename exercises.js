@@ -6,18 +6,20 @@
 // Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-then-else construct available in Javascript.
 // ---------------------
 
-function max(){
+function max(num1, num2){
     "use strict";
 
-  var num1 = x;
-  var num2 = y;
-
   if ('num1' >= 'num2') {
-    return(num1 + ' is larger than ' + num2);
+    return state(num1 + ' is larger than ' + num2);
   } else {
-    return(num2 + ' is larger than ' + num1);
+    return state(num2 + ' is larger than ' + num1);
     }
-}
+
+    var state = max(5, 8);
+
+  document.getElementById('larger').innerHTML = state;
+
+};
 
 // ---------------------
 // Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.
@@ -25,19 +27,22 @@ function max(){
 
 function maxOfThree(){
     "use strict";
-    var num1 = x;
-    var num2 = y;
-    var num3 = z;
+    var num1;
+    var num2;
+    var num3;
 
-    if ('num1' >= 'num2') {
-      return(num1 + ' is larger than ' + num2);
-    } else if{
-      return(num2 + ' is larger than ' + num1);
+    if ('num1' >= 'num2' >= 'num3') {
+      return (num1 + ' is larger than ' + num2 + ' and ' + num3);
+    } else if ('num2' >= 'num1' >= 'num3') {
+      return (num2 + ' is larger than ' + num1 + ' and ' + num3);
     } else {
-      return(num2 + ' is larger than ' + num1 + ' and ' + num3);
+      return (num3 + ' is larger than ' + num2 + ' and ' + num1);
     }
-  }
-}
+
+    var state = maxOfThree(5, 2, 8);
+    document.getElementById('largest').innerHTML = state;
+
+};
 
 // ---------------------
 // Write a function that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
