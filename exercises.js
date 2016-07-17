@@ -60,11 +60,22 @@ console.assert (max(1, -2) == 1);
 
 function maxOfThree() {
     'use strict';
+    var number1;
+    var number2;
+    var number3;
 
-    return max(max(number1, number2), number3);
-  }
+    if(number1 >= number2 >= number3){
+      return (number1 + ' is larger than ' + number2 + ' and ' + number3);
+    }else if(number2 >= number1 >= number3){
+      return (number2 + ' is larger than ' + number1 + ' and ' + number3);
+    }else {
+      return (number3 + ' is larger than ' + number1 + ' and ' + number2);
+    }
+    var state = maxOfThree(5, 2, 8);
+    document.getElementById('largest').innerHTML = state;
+  };
 
-  console.assert (max(10, 5, 14) == 14);
+  console.assert('#largest');
 
 
 // ---------------------
@@ -85,14 +96,18 @@ function maxOfThree() {
 
 function isVowel(char){
      "use strict";
+     if (char.length == 1)
+     {
+       var vowels = "aeiou";
+       var isVowel = vowels.indexOf(char) >= 0 ? true : false;
 
-     'aeiou'.indexOf(char) !== -1;  //returns the expression of "not 1" to inspect whether the chosen letter matches parameter ('vowel')
-
-     return false;
-}
+       return isVowel;
+     }
+};
 
 console.assert(isVowel('a') == true);
-console.assert(isVowel('t') == false);
+console.assert(isVowel('b') == false);
+
 // ---------------------
 // Write a function rovarspraket() that will translate a text into "rövarspråket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".
 // ---------------------
@@ -157,11 +172,10 @@ console.assert(sum([1,2,3,4]) == 10);
 
 function multiply(numbersToMultiply){
   "use strict";
+  var total = 1;
 
-  var product = numbersToMultiply[0];
-
-  for(var i=1; i<numbersToMultiply.length; i++){
-    total += numbersToMultiply[i];
+  for(var i=0; i<numbersToMultiply.length; i++){
+    total = total * numbersToMultiply[i];
   }
 
   return total;
@@ -173,7 +187,7 @@ console.assert(multiply([1,2,3,4]) == 24);
 // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
 // ---------------------
 
-function reverse(){
+function reverse(phrase){
     "use strict";
 
     return phrase.split('').reverse().join('');
@@ -188,33 +202,33 @@ console.assert(reverse('jag testar') == "ratset gaj")
 function findLongestWord(words){
     "use strict";
 
-    var longestLength = 0;
-
-    for(var i=0; i<word.length; i++);
-
-    return longestLength;
+    var elements = words.length;
+    var count = 0;
+    for (var i=0; i<elements; i++) {
+      if (words[i].length > count)
+        count = words[i].length;
+    }
+    return count;
 }
 
 console.assert(findLongestWord(['it', 'the', 'long']) == 4);
-console.assert(findLongestWord(['long', 'the', 'it']) == 4);
 // ---------------------
 // Write a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
 // ---------------------
 
-function filterLongWords(words, i){
+function filterLongWords(words, int){
     "use strict";
 
-    var newWordList = [];
+    var length = words.length;
+    var longestWords = [];
 
-    for(var i=0; i<words.length; i++){
-      var word = words[i];
-      if(word.length < size){
-        newWordList.push(word);
+    for (var i=0; i<length; i++) {
+      if (words[i].length > int) {
+        longestWords[longestWords.length] = words[i];
       }
     }
-
-    return newWordList;
-}
+    return longestWords;
+  }
 
 console.assert(filterLongWords(['it', 'the', 'long'], 4) == ['it', 'the']);
 // ---------------------
@@ -225,16 +239,15 @@ function charFreq(string){
     "use strict";
     var frequency = {};
 
-    for(var i=0; i<string.length; i++){
-      var char = string[i]
-      if(frequency.hasOwnProperty(char)){
-        frequency[char] += 1;
-      }else {
-        frequency[char] =1;
+    for (var i = 0, len = string.length; i < len; i++) {
+      var currChar = string.charAt(i);
+      if (currChar in frequency) {
+        frequency[currChar] += 1;
+      } else {
+        frequency[currChar] = 1;
       }
     }
-
     return frequency;
-}
+  }
 
-console.log(charFreg("adddfaefefevvfewsfeeasfefefsfe"));
+console.log(charFreq("adddfaefefevvfewsfeeasfefefsfe"));
